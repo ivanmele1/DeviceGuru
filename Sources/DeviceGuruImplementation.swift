@@ -9,7 +9,7 @@ public enum DeviceGuruException: Error {
     case unableToCreateDeviceVersion(String)
 }
 
-public final class DeviceGuruImplementation: DeviceGuru {
+@objc public final class DeviceGuruImplementation: NSObject, DeviceGuru {
 
     private enum LocalStorageKeys {
         static let hardwareDetail = "github.com/InderKumarRathore/DeviceGuru.HardwareDetail.Key"
@@ -69,7 +69,7 @@ public final class DeviceGuruImplementation: DeviceGuru {
         return simpleName.trimmingCharacters(in: .whitespaces)
     }
 
-    public func hardwareDescription() throws -> String {
+    @objc public func hardwareDescription() throws -> String {
         if let hardwareDescription = hardwareDetail?["name"] as? String {
             return hardwareDescription
         }
